@@ -19,18 +19,18 @@
     min-height: 70px;
 }
 
-.menu{
+.header{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.menu h3{
+.header h3{
     color: white;
 }
 
-.menu a{
+.header a{
     color: white;
     text-decoration: none;
     border: 1px solid white;
@@ -38,7 +38,7 @@
     border-radius: 8px;
 }
 
-.conteudo-single{
+.select-card{
     max-width: 300px;
     text-align: center;
     margin-top: 20px;
@@ -51,16 +51,16 @@
     border-radius: 8px;
 }
 
-.conteudo-single link{
+.select-card link{
     text-decoration: none;
 }
 
-.conteudo-single img{
+.select-card img{
     width: 200px;
     border-radius: 5%;
 }
 
 @media screen and (max-width: 768px){
-    .conteudo-single{width: 100%;}
+    .select-card{width: 100%;}
     
 }
