@@ -8,7 +8,7 @@ import {
 import Homepage from './pages/Homepage';
 import Location from './pages/Location';
 import AccessedHours from './pages/AccessedHours';
-import FolsReach from './pages/FolsReach/indes';
+import FolsReach from './pages/FolsReach';
 import FolsReadByUser from './pages/FolsReadByUser';
 
 export default function Routes() {
