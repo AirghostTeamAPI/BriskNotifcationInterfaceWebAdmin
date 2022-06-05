@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import ReactDOM from 'react-dom';
-import Button from '@mui/material/Button';
 
 import {
   PieChart,
