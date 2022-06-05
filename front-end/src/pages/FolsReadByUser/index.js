@@ -99,9 +99,9 @@ export default function FolsReadByUser() {
            <p></p>
            <TextField onChange={event => setUsername(event.target.value)} id="standard-basic" label="Digite o login do usuário" variant="standard" name={'user'} />   
            <Button onClick={() => calcFolByUser()} variant="contained">Pesquisar</Button> 
-           <p>Total de Fols lida pelo usuário pesquisado</p>    
+           <p>All Fols viewed by the user searched</p>    
            <FolsViewedByUser value={progress} />
-           <p>Total de Fols lidas pelos usuários</p>  
+           <p>All Fols viewed by all users</p>  
            <AllFolsViewedByAllUsers value={allProgress} />
         </div>
  );
