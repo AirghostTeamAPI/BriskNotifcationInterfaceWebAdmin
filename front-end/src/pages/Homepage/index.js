@@ -1,23 +1,12 @@
 import React from "react";
 import "../../Styles/Homepage/style.css";
 import { Link } from "react-router-dom";
+import Header from "../../Components/Header";
 
 function Homepage() {
   return (
-    <div className="App">
-      <div className="main">
-        <div className="center">
-          <div className="header">
-            <div className="Logo">
-              <h3>Brisk.Administrator</h3>
-            </div>
-            <div>
-              <a href="#">Menu</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div>
+      <Header/>
       <div className="content">
         <div className="center">
           <div className="select-card">
