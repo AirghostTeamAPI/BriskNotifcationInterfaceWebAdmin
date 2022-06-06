@@ -17,7 +17,7 @@ export default function FolsReadByUser() {
 
   async function calcFolByUser(){
     
-    const userData = await Axios.get(`http://localhost:5001/api/user?login=${username}`);
+    const userData = await Axios.get(`https://brisk-notification-user.herokuapp.com//api/user?login=${username}`);
     const qtdFolViewed = userData.data.viewedFols.length;
     const equipments = userData.data.equipment.replace(/ /g, "");
     const userEquipments = await Axios.get(`http://localhost:5000/api/fols/viewedBy?equipment=${equipments}`);
@@ -28,7 +28,7 @@ export default function FolsReadByUser() {
   }
 
   async function calcAllFolByUsers(){
-    const allViewedFols = await Axios.get(`http://localhost:5001/api/user/fols`); 
+    const allViewedFols = await Axios.get(`https://brisk-notification-user.herokuapp.com//api/user/fols`); 
     const allViewedFolsFiltered = [...new Set(allViewedFols.data)];
     const allFolsData = await Axios.get(`http://localhost:5000/api/fols/all`); 
     const allFolsViewed = allFolsData.data.length

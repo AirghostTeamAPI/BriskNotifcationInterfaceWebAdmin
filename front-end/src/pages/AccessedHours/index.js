@@ -6,7 +6,7 @@ import axios from 'axios';
 function AccessedHours() {
   const [data, setData] = React.useState([]);
   useEffect(() => {
-    axios.get('http://localhost:5001/api/access').then((data) => setData(data.data));
+    axios.get('https://brisk-notification-user.herokuapp.com//api/access').then((data) => setData(data.data));
   }, []);
   const data1 = [];
  data.map((hour) => {

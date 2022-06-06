@@ -11,7 +11,7 @@ function Location() {
   let teste;
   useEffect(() => {
     const fetchData = async () => {
-      const a = await Axios.get("http://localhost:5001/api/user/location")
+      const a = await Axios.get("https://brisk-notification-user.herokuapp.com//api/user/location")
       return a.data
     }
     fetchData().then((response) => { setJsonLocation(response) });
