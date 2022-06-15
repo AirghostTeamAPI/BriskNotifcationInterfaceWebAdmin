@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import CircularProgress, {
-  CircularProgressProps,
-} from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { formControlClasses } from '@mui/material';
+import Header from "../../Components/Header";
 
 export default function FolsReadByUser() {
   const [username, setUsername] = useState('');
@@ -17,10 +15,10 @@ export default function FolsReadByUser() {
 
   async function calcFolByUser(){
     
-    const userData = await Axios.get(`https://brisk-notification-user.herokuapp.com//api/user?login=${username}`);
+    const userData = await Axios.get(`http://brisk-notification-user.herokuapp.com/api/user?login=${username}`);
     const qtdFolViewed = userData.data.viewedFols.length;
     const equipments = userData.data.equipment.replace(/ /g, "");
-    const userEquipments = await Axios.get(`http://localhost:5000/api/fols/viewedBy?equipment=${equipments}`);
+    const userEquipments = await Axios.get(`http://brisk-notification-fol.herokuapp.com/api/fols/viewedBy?equipment=${equipments}`);
     const qtdFolPenging = userEquipments.data;
     const folViewResult = (qtdFolViewed * 100) / qtdFolPenging;
     setProgress(parseInt(folViewResult)); 
@@ -28,9 +26,9 @@ export default function FolsReadByUser() {
   }
 
   async function calcAllFolByUsers(){
-    const allViewedFols = await Axios.get(`https://brisk-notification-user.herokuapp.com//api/user/fols`); 
+    const allViewedFols = await Axios.get(`http://brisk-notification-user.herokuapp.com/api/user/fols`); 
     const allViewedFolsFiltered = [...new Set(allViewedFols.data)];
-    const allFolsData = await Axios.get(`http://localhost:5000/api/fols/all`); 
+    const allFolsData = await Axios.get(`http://brisk-notification-fol.herokuapp.com/api/fols/all`); 
     const allFolsViewed = allFolsData.data.length
     const folViewResult = (allViewedFolsFiltered.length * 100) / allFolsViewed;
     setAllProgress(parseInt(folViewResult));   
@@ -41,6 +39,8 @@ export default function FolsReadByUser() {
 
   function FolsViewedByUser(props) {
     return (
+      <div>
+        <center>
       <Box sx={{ position: 'relative', display: 'inline-flex' }}>
         <CircularProgress size="120px" variant="determinate" {...props} />
         <Box
@@ -62,11 +62,14 @@ export default function FolsReadByUser() {
           </Typography>
         </Box>
       </Box>
+      </center>
+      </div>
     );
   }
 
   function AllFolsViewedByAllUsers(props) {
     return (
+      <center>
       <Box sx={{ position: 'relative', display: 'inline-flex' }}>
         <CircularProgress size="120px" variant="determinate" color='success' {...props} />
         <Box
@@ -88,10 +91,13 @@ export default function FolsReadByUser() {
           </Typography>
         </Box>
       </Box>
+      </center>
     );
   }
   
   return (
+    <center>
+      <Header/>
         <div className='App'>
            <h1>FOLs Read by User</h1>
            <p></p>
@@ -104,6 +110,7 @@ export default function FolsReadByUser() {
            <p>All Fols viewed by all users</p>  
            <AllFolsViewedByAllUsers value={allProgress} />
         </div>
+      </center>
  );
 
 }

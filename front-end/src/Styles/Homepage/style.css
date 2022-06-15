@@ -68,7 +68,17 @@
     border-radius: 5%;
 }
 
+.bar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 768px){
     .select-card{width: 100%;}
-    
+    .barchart{width: 80%;}
+    .bar{width: 80%;}
 }
+

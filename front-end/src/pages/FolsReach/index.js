@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import TextField from '@mui/material/TextField';
-
+import Header from "../../Components/Header";
 import {
   PieChart,
   Pie,
@@ -17,12 +17,9 @@ export default function FolsReach() {
 
   const [usertotal, setUsertotal] = useState('');
   const [userhasntseen, setUserhasntseen] = useState('');
-  
 
-  const [usertotalnotif, setTotalNotif] = useState('');
-
-  const qtdUserNotif =  (Axios.get(`http://localhost:5000/api/fols/notifiedUsers?title=${namefol}`).then((qtdUserNotif)=>setUsertotal(qtdUserNotif.data.length)));
-  const qtdUserRead =  (Axios.get(`http://localhost:5000/api/fols/viewedUsers?title=${namefol}`).then((qtdUserRead)=>setUserhasntseen(qtdUserRead.data.length)));
+  Axios.get(`http://brisk-notification-fol.herokuapp.com/api/fols/notifiedUsers?title=${namefol}`).then((qtdUserNotif)=>setUsertotal(qtdUserNotif.data.length));
+  Axios.get(`http://brisk-notification-fol.herokuapp.com/api/fols/viewedUsers?title=${namefol}`).then((qtdUserRead)=>setUserhasntseen(qtdUserRead.data.length));
   
   
   const COLORS = ['#17BEBB', '#0E7C7B'];
@@ -36,6 +33,7 @@ return(
 
   
 <div style={{ textAlign: "center" }}>
+<Header/>
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

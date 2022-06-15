@@ -1,8 +1,8 @@
 import React from "react";
 import "../../Styles/Homepage/style.css";
 
-function Header() {
-  <div className="App">
+export default function Header() {
+  return (
     <div className="main">
       <div className="center">
         <div className="header">
@@ -12,6 +12,5 @@ function Header() {
         </div>
       </div>
     </div>
-  </div>;
+  );
 }
-export default Header();

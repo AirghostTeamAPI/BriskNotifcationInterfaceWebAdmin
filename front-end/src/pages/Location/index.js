@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer } from 'recharts';
 import Axios from 'axios';
 import "../../Styles/Homepage/style.css";
 
@@ -8,15 +8,14 @@ import "../../Styles/Homepage/style.css";
 function Location() {
 
   const [jsonLocation, setJsonLocation] = useState([]);
-  let teste;
   useEffect(() => {
     const fetchData = async () => {
-      const a = await Axios.get("https://brisk-notification-user.herokuapp.com//api/user/location")
+      const a = await Axios.get("http://brisk-notification-user.herokuapp.com/api/user/location")
       return a.data
     }
     fetchData().then((response) => { setJsonLocation(response) });
   }, []);
-  let dictionary = new Object()
+  let dictionary = {};
   for (let i = 0; i < jsonLocation.length; i++) {
     console.log(jsonLocation[i])
     if (!dictionary[jsonLocation[i].country]) dictionary[jsonLocation[i].country] = 0
@@ -31,6 +30,8 @@ function Location() {
   }
 
   return (
+    <div style={{ width: '100%', height: 300 }}>
+    <ResponsiveContainer width="100%" height="100%">
     <div className="App">
     <div className="main">
       <div className="center">
@@ -40,7 +41,9 @@ function Location() {
       </div>
     </div>
         <div className='barchart'>
-          <BarChart width={1800} height={300} data={graphData} top={500}>
+          <center>
+          
+          <BarChart width={800} height={300} data={graphData} top={500} className="bar">
             <XAxis dataKey="name" stroke="#8A2BE2" />
             <YAxis />
             <Tooltip wrapperStyle={{ width: 120, backgroundColor: '#ccc' }} />
@@ -48,7 +51,10 @@ function Location() {
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <Bar dataKey="Quantidade" fill="#8A2BE2" barSize={30} />
           </BarChart>
+          </center>
         </div>
+      </div>
+      </ResponsiveContainer>
       </div>
   );
 }
